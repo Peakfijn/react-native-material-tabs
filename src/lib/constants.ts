@@ -1,4 +1,4 @@
 export default {
   barHeight: 48,
-  indicatorHeight: 2,
+  indicatorHeight: 4,
 };

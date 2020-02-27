@@ -68,9 +68,14 @@ const MaterialTabs: React.FC<Props> = ({
     [items.length, scrollable]
   );
 
+  const getTabItemWidth = useCallback(
+    () => (!scrollable ? tabWidth : barWidth * 0.25),
+    [scrollable, tabWidth, barWidth]
+  );
+
   useEffect(() => {
     const getAnimateValues = () => {
-      const scrollValue = !scrollable ? tabWidth : barWidth * 0.4;
+      const scrollValue = getTabItemWidth();
 
       const indicator = I18nManager.isRTL
         ? -selectedIndex * scrollValue
@@ -117,6 +122,7 @@ const MaterialTabs: React.FC<Props> = ({
 
     selectTab();
   }, [
+    getTabItemWidth,
     bar,
     barWidth,
     getTabWidth,
@@ -155,7 +161,7 @@ const MaterialTabs: React.FC<Props> = ({
                 textStyle={textStyle}
                 activeTextStyle={selectedIndex === idx && activeTextStyle}
                 tabHeight={barHeight}
-                tabWidth={!scrollable ? tabWidth : barWidth * 0.4}
+                tabWidth={getTabItemWidth()}
                 uppercase={uppercase}
                 inActiveTextColor={inactiveTextColor}
               />
@@ -165,7 +171,7 @@ const MaterialTabs: React.FC<Props> = ({
           <Indicator
             color={indicatorColor}
             value={indicatorPosition}
-            tabWidth={!scrollable ? tabWidth : barWidth * 0.4}
+            tabWidth={getTabItemWidth()}
           />
         </ScrollView>
       </Bar>
