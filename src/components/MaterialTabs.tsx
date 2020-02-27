@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 
 import Tab from './Tab';
-import Indicator from './Indicator';
 import { ContentType } from './Tab/Tab';
 
 import { Bar, TabTrack } from '../lib/styles';
@@ -47,8 +46,8 @@ const MaterialTabs: React.FC<Props> = ({
   textStyle,
   activeTextStyle,
   inactiveTextColor,
-  uppercase,
   indicatorColor,
+  uppercase,
   barColor,
 }) => {
   const [tabWidth, setTabWidth] = useState(0);
@@ -164,15 +163,10 @@ const MaterialTabs: React.FC<Props> = ({
                 tabWidth={getTabItemWidth()}
                 uppercase={uppercase}
                 inActiveTextColor={inactiveTextColor}
+                indicatorColor={indicatorColor}
               />
             ))}
           </TabTrack>
-
-          <Indicator
-            color={indicatorColor}
-            value={indicatorPosition}
-            tabWidth={getTabItemWidth()}
-          />
         </ScrollView>
       </Bar>
     )

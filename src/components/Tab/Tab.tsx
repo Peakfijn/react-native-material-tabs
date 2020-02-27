@@ -16,6 +16,7 @@ interface TabProps {
   uppercase: boolean;
   activeTextStyle?: StyleProp<TextStyle>;
   onPress(): void;
+  indicatorColor: string;
 }
 
 const Tab = ({
@@ -30,11 +31,17 @@ const Tab = ({
   textStyle,
   uppercase,
   activeTextStyle,
+  indicatorColor,
 }: TabProps) => {
   const color = active ? activeTextColor : inActiveTextColor;
 
   return (
-    <TabButton onPress={onPress} tabWidth={tabWidth}>
+    <TabButton
+      onPress={onPress}
+      tabWidth={tabWidth}
+      tabActive={active || false}
+      tabIndicatorColor={indicatorColor}
+    >
       <TabBody tabHeight={tabHeight}>
         {typeof content === 'string' ? (
           <TabText
