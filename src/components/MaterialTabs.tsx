@@ -68,7 +68,7 @@ const MaterialTabs: React.FC<Props> = ({
   );
 
   const getTabItemWidth = useCallback(
-    () => (!scrollable ? tabWidth : barWidth * 0.25),
+    () => (!scrollable ? tabWidth : 105),
     [scrollable, tabWidth, barWidth]
   );
 
